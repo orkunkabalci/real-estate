@@ -1,0 +1,66 @@
+:host {
+
+
+  .logo{
+    height: 42px;
+  }
+  .filter{
+      font-size: 25px;
+      color: #3880ff;
+     
+  }
+
+
+  .adverst {
+    .tag{
+      position: absolute;
+      top: -13px;
+      right: 5px;
+      color: white;
+      background-color: red;
+      padding: 5px;
+    }
+    .adverstimg {
+      width: 330px;
+      height: 200px;
+    }
+    .adverstname {
+      font-size: large;
+      font-weight: bold;
+    }
+    .adverstinfo {
+      font-size: 15px;
+      color: black;
+    }
+    .adverstprice {
+      font-size: large;
+      font-weight: bold;
+      color: grey;
+    }
+  }
+  .miniadverst {
+    display: flex;
+    height: 110px;
+    .img {
+      margin-top: 10px;
+      width: 90px;
+      height: 90px;
+      margin-left: 10px;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+    .adverstname {
+      font-weight: bold;
+    }
+    p {
+      width: 220px;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+    .adverstprice {
+      color: gray;
+      text-align: end;
+      font-weight: bold;
+    }
+  }
+}

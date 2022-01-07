@@ -1,0 +1,26 @@
+:host {
+  div {
+    padding: 5px 25px 5px 25px;
+  }
+  ion-card {
+    h2 {
+      padding-left: 15px;
+    }
+    a {
+      padding: 0 0 25px 15px;
+      text-decoration: none;
+      color: #737373;
+      font-size: large;
+        
+    }
+    span{
+        margin: 5px 0 5px 0;
+    }
+    .map{
+        width: 330px;
+        margin-left: 6px;
+        height: 200px;
+        background-color: gray;
+    }
+  }
+}

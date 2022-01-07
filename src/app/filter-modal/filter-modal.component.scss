@@ -1,0 +1,43 @@
+:host {
+  .filterdiv {
+    position: absolute;
+    width: 375px;
+    height: auto;
+    top: 0;
+    z-index: 999;
+    ion-list {
+      padding: 20px;
+      height: 100vh;
+
+      .close {
+        font-size: 35px;
+        margin-top: -11px;
+        margin-left: -15px;
+        color: red;
+      }
+
+      ion-label {
+        padding: 10px 0;
+      }
+      .buttons {
+        margin-top: 50px;
+        display: flex;
+        ion-button {
+          bottom: 80px;
+          width: calc(100% - 200px);
+          height: 60px;
+          --border-radius: 5px;
+          font-size: 16px;
+          font-weight: 500;
+          margin-left: 25px;
+          margin-top: 25px;
+
+          &.clear-filter {
+            bottom: 15px;
+            --background: rgb(216, 0, 0);
+          }
+        }
+      }
+    }
+  }
+}

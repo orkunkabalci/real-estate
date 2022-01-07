@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="consultant">
+    <ion-card>
+      <img [src]="consultant?.thumbnail">
+      <p class="name"> {{consultant?.name|titlecase}} {{consultant?.surname|titlecase}} </p>
+      <div>
+        <a class="first" href="tel:{{consultant?.phone_number}}">
+          <p class="contactp">{{consultant?.phone_number}} </p>
+        </a>
+        <a href="mailto:{{consultant?.mail}} ">
+          <p class="contactp">{{consultant?.mail}} </p>
+        </a>
+      </div>
+      <h5>Bio</h5>
+      <p class="desc"> {{consultant?.description}} </p>
+    </ion-card>
+  </div>
+
+  <h4> {{consultant?.name|titlecase}} {{consultant?.surname|titlecase}}'s adversts
+  </h4>
+  <div *ngFor="let adverst of adversts" [routerLink]="[ '/adverst-detail/', adverst._id ]">
+    <ion-card class="miniadverst">
+      <img class="img" [src]="adverst.cover_img">
+      <div>
+        <p class="adverstname"> {{adverst.name|titlecase}} </p>
+        <p class="adverstinfo"> {{adverst.adverst_status|titlecase}} <span
+            *ngFor="let category of adverst.categories">{{ category.name|titlecase}}</span> </p>
+        <p class="adverstadress"> {{adverst.address.district |titlecase}} / {{adverst.address.city |titlecase}} /
+          {{adverst.address.country |titlecase}}
+        </p>
+        <p class="adverstprice"> {{adverst.price}} {{adverst.currency}}</p>
+      </div>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img class="headimg" [src]="selectedimg">
+
+  <div class="slides">
+    <ion-slides [options]="slideOpts">
+      <ion-slide *ngFor="let image of adverst?.images">
+        <img (click)="imgclick(image)" class="roomsimg" [src]="image">
+      </ion-slide>
+    </ion-slides>
+    <h4> {{adverst?.name}} </h4>
+  </div>
+
+
+  <div class="consultant" [routerLink]="[ '/consultant-profile/', adverst?.consultant._id ]"> 
+    <ion-avatar>
+      <img [src]="adverst?.consultant.thumbnail">
+    </ion-avatar>
+    <p> {{adverst?.consultant.name}} <br> {{adverst?.consultant.surname}}</p>
+
+    <ion-icon name="call-outline"></ion-icon>
+    <a href="tel:{{adverst?.consultant.phone_number}}">
+      <p class="contactp">{{adverst?.consultant.phone_number}} </p>
+    </a>
+  </div>
+
+  <div>
+    <ion-segment value="information" (ionChange)="segmentChanged($event.target['value'])">
+      <ion-segment-button value="information">
+        <ion-label>information</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="description">
+        <ion-label>Description</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="map">
+        <ion-label>Map</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div class="information" *ngIf="activeSegment=='information'">
+    <ion-list>
+      <ion-item>
+        <ion-label>Price:<span>{{adverst?.price}} {{adverst?.currency}}</span> </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Add date:<span>{{adverst?.created_at|date:'longDate'}}</span> </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Real Estate:<span>For {{adverst?.adverst_status}}</span></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label> Structure Type: <span *ngFor="let category of adverst?.categories">{{
+            category.name|titlecase}}</span> </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Size:<span> {{adverst?.square_meters}}m²</span> </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Number of rooms:<span>{{adverst?.room_count}} </span></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Number of bedrooms:<span>{{adverst?.bedroom_count}} </span></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Number of bathrooms:<span>{{adverst?.bathroom_count}} </span></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Age of Building:<span>{{adverst?.building_age}}</span></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Warming type:<span>{{adverst?.warming_type}}</span></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fuel type:<span>{{adverst?.fuel_type}}</span></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address:<span>{{adverst?.address.district |titlecase}} / {{adverst?.address.city |titlecase}} /
+          {{adverst?.address.country |titlecase}} </span></ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="description" *ngIf="activeSegment=='description'">
+    <p>
+      {{adverst?.description}}
+    </p>
+  </div>
+  <div #map id="map" class="map"  *ngIf="activeSegment=='map'" >
+    <spica-map-iframe [data]="adverst?.location"></spica-map-iframe>
+
+  </div>
+
+</ion-content>

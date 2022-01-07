@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button>
+        <ion-icon name="menu-outline"></ion-icon>
+      </ion-menu-button>
+    </ion-buttons>
+    <ion-title>Consultants</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let consultant of consultants">
+    <img [routerLink]="[ '/consultant-profile/', consultant._id ]" [src]="consultant.thumbnail">
+
+    <div>
+      <p class="name"> {{consultant.name}} {{consultant.surname}} </p>
+      <p class="contactp">{{consultant.phone_number}} </p>
+
+      <p class="contactp">{{consultant.mail}} </p>
+    
+    </div>
+    <div class="icondiv"> 
+      <a href="tel:{{consultant.phone_number}}">
+        <ion-icon name="call-outline"></ion-icon>
+      </a> <br>
+      <a href="mailto:{{consultant.mail}} ">
+        <ion-icon class="last" name="mail-outline"></ion-icon>
+      </a>
+    </div>
+  </ion-card>
+</ion-content>

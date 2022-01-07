@@ -1,0 +1,64 @@
+<div class="filterdiv">
+  <ion-list>
+    <ion-item detail='false' lines="none">
+      <ion-buttons slot="start">
+        <ion-icon (click)="deactiveFilter()" class="close" name="close-outline"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+
+
+    <ion-item>
+    <ion-label position="floating">Category</ion-label>
+      <ion-select [(ngModel)]="catid"   >
+        <ion-select-option *ngFor="let category of categoriess" [value]="category._id">
+          {{ category?.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating"> For </ion-label>
+      <ion-select [(ngModel)]="filter.adverst_status">
+        <ion-select-option value="rent">
+          rent
+        </ion-select-option>
+        <ion-select-option value="sale">
+          sale
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Country</ion-label>
+      <ion-select (ionChange)="countryChange($event.target['value'])">
+        <ion-select-option *ngFor="let country of countries" [value]="country.name">
+          {{ country.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">City</ion-label>
+      <ion-select (ionChange)="cityChange($event.target['value'])" [disabled]="!filter.address.country">
+        <ion-select-option [value]="city.name" *ngFor="let city of cities">
+          {{ city.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">District</ion-label>
+      <ion-select (ionChange)="districtChange($event.target['value'])" [disabled]="!filter.address.city">
+        <ion-select-option [value]="state" *ngFor="let state of states">
+          {{ state }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Min. Price</ion-label>
+      <ion-input type="number" [(ngModel)]="filter.price.$gte"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Max. Price</ion-label>
+      <ion-input type="number" [(ngModel)]="filter.price.$lte"></ion-input>
+    </ion-item>
+    <div class="buttons">
+      <ion-button (click)="setFilter()">Apply Filter</ion-button>
+      <ion-button class="clear-filter" (click)="clearFilter()">Clear Filter</ion-button>
+    </div>
+  </ion-list>
+</div>

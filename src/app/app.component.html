@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    
+    <ion-menu side="start" menuId="first" contentId="main">
+      <ion-header >
+        <ion-toolbar translucent>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item detail="false" (click)="menuclose()" routerLink="/home">Home </ion-item>
+          <ion-item detail="false"  (click)="menuclose()" routerLink="/announcement">Announcement</ion-item>
+          <ion-item detail="false"  (click)="menuclose()" routerLink="/consultant">Consultants</ion-item>
+          <ion-item detail="false"  (click)="menuclose()" routerLink="/about-us">About Us</ion-item>
+
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+  <ion-content>
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-content>
 </ion-app>
